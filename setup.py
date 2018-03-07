@@ -1,4 +1,4 @@
 from eka.utils.plugins import setup
 
-import ekaPyCRUD
-setup(ekaPyCRUD)
+import ekaPyCRUDApp
+setup(ekaPyCRUDApp)
