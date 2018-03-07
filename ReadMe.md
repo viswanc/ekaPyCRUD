@@ -10,3 +10,4 @@ Log
 
   * 1252  Initial commit.
   * 1256  Renamed the package.
+  * 1520  Wiring for the store done.

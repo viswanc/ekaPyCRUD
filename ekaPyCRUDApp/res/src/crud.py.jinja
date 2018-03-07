@@ -2,33 +2,33 @@ r"""
 Python CRUD application.
 """
 
-import Store
+import store
 
 # Helpers
 def singleton(cls):
   return cls()
 
-{% for name, prop in props.iteritems() if prop.permissions != '' %}
+{% for name, prop in props.iteritems() if prop.permissions != '' -%}
 @singleton
 class {{ name }}:
   {% if 'r' in prop.permissions %}
   def read(self, Data):
-    return Store[{{ name }}].read(Data['id'])
+    return store[{{ name }}].read(Data['id'])
   {% endif -%}
 
   {% if 'c' in prop.permissions %}
   def create(self, Data):
-    return Store[{{ name }}].create(Data)
+    return store[{{ name }}].create(Data)
   {% endif -%}
 
   {% if 'u' in prop.permissions %}
   def update(self, Data):
-    return Store[{{ name }}].update(Data['id'], Data)
+    return store[{{ name }}].update(Data['id'], Data)
   {% endif -%}
 
   {% if 'd' in prop.permissions %}
   def delete(self, Data):
-    return Store[{{ name }}].delete(Data['id'])
+    return store[{{ name }}].delete(Data['id'])
   {% endif -%}
 
 {% endfor -%}

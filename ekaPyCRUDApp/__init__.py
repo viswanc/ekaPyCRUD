@@ -51,7 +51,11 @@ class PythonCrud(node):
 
     buildTgt = Structure['buildBase']
     buildSrc = '%s/res' % dirname(__file__)
+    builtPath = jinjaBuilder().build(buildSrc, buildTgt, Structure)
 
+    # Build the store
+    Structure['buildBase'] = '%s/src' % builtPath
     getPluginClass(Structure['builder']['store']['class'])(self.Structure, self.Scopes).build()
+    Structure['buildBase'] = buildTgt
 
-    return jinjaBuilder().build(buildSrc, buildTgt, Structure)
+    return builtPath
